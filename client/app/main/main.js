@@ -1,10 +1,15 @@
-'use strict';
+(function() {
+    'use strict';
 
-angular.module('todosApp')
-  .config(function ($routeProvider) {
-    $routeProvider
-      .when('/', {
-        templateUrl: 'app/main/main.html',
-        controller: 'MainCtrl'
-      });
-  });
+    function config($routeProvider) {
+        $routeProvider
+            .when('/', {
+                templateUrl: 'app/main/main.html',
+                controller: 'MainCtrl',
+                controllerAs: 'mainCtrl'
+            });
+    }
+
+    angular.module('todosApp')
+        .config(['$routeProvider', config]);
+}());

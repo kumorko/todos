@@ -1,11 +1,17 @@
-'use strict';
+(function() {
+    'use strict';
 
-angular.module('todosApp')
-  .controller('MainCtrl', function ($scope, $http) {
-    $scope.awesomeThings = [];
+    function MainCtrl($http) {
+        this.awesomeThings = [];
 
-    $http.get('/api/things').success(function(awesomeThings) {
-      $scope.awesomeThings = awesomeThings;
-    });
+        var self = this;
+        $http.get('/api/things').success(function(awesomeThings) {
+            self.awesomeThings = awesomeThings;
+        });
 
-  });
+    }
+
+    angular.module('todosApp')
+        .controller('MainCtrl', ['$http', MainCtrl]);
+
+}());
