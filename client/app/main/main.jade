@@ -12,9 +12,9 @@ form.t-input-form
 
 .row
   .col-lg-12
-    ul.t-todo-list.nav.nav-tabs.nav-stacked.col-xs-12.col-sm-offset-1.col-sm-10
-      li(ng-repeat='thing in awesomeThings')
-        a(href='#', tooltip='{{thing.info}}')
+    ul.t-todo-list.col-xs-12.col-sm-offset-1.col-sm-10
+      li.t-task(ng-repeat='thing in mainCtrl.awesomeThings')
+        span(href='#')
           | {{thing.name}}
 
 footer.footer

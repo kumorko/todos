@@ -1,28 +1,40 @@
-.thing-form {
-  margin: 20px 0;
-}
 
 .t-banner {
     border-bottom: none;
     margin-top: -20px;
 }
 
+
 .t-banner h1 {
     font-size: 60px;
     line-height: 1;
     letter-spacing: -1px;
 }
+
     .t-banner__logo {
         font-size: 50px;
     }
+
 
 .t-input-form {
     margin: 20px 0;
 }
 
+
 .t-todo-list {
     padding: 0;
+    list-style: none;
+
+    &:hover {//ad cursor style on parent, due to cursor change on li border
+        cursor: pointer;
+    }
 }
+
+    .t-task {
+        border-bottom: 1px solid #E5E5E5;
+        padding: 10px 15px;
+    }
+
 
 .hero-unit {
     position: relative;
@@ -32,6 +44,7 @@
     text-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
     background: #4393B9;
 }
+
 
 .footer {
     text-align: center;
