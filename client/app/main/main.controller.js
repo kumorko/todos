@@ -1,17 +1,27 @@
 (function() {
     'use strict';
 
-    function MainCtrl($http) {
-        this.awesomeThings = [];
+    function MainCtrl($scope, taskService) {
 
-        var self = this;
-        $http.get('/api/things').success(function(awesomeThings) {
-            self.awesomeThings = awesomeThings;
-        });
+        this.createTask = function() {
+            var self = this;
+            taskService
+                .create(this.text)
+                .then(function() {
+                    self.text = '';
+                }, function() {
+                    //TODO error handling
+                });
+        };
 
+        this.counter = taskService.counter;
+        this.filter = {
+            text: '',
+            done: ''
+        };
     }
 
     angular.module('todosApp')
-        .controller('MainCtrl', ['$http', MainCtrl]);
+        .controller('MainCtrl', ['$scope', 'taskService', MainCtrl]);
 
 }());

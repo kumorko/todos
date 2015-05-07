@@ -3,21 +3,72 @@ div(ng-include='components/navbar/navbar.html')
 header.t-banner.hero-unit
   .container
     h1 todos
-    p.lead you don't have to remember everything, when you write it down ;-)
-    span.t-banner__logo.glyphicon.glyphicon-check
+    p.lead you don't have to remember everything, when you write it down
+    span.t-banner__logo.glyphicon.glyphicon-list
+    .t-counter
+      span.t-counter__todo(title='todo items count')
+        span.glyphicon.glyphicon-unchecked
+        span.t-counter__number {{mainCtrl.counter.todo}}
+      span.t-counter__done(title='done items count')
+        span.glyphicon.glyphicon-check
+        span.t-counter__number {{mainCtrl.counter.done}}
 
-form.t-input-form
+form.t-input-form(
+  name='addTaskForm'
+  ng-submit='mainCtrl.createTask()'
+)
   .form-group.col-xs-12.col-sm-offset-1.col-sm-10
-    input.form-control(name='text' type='text' placeholder='What needs to be done ?')
-
+    input.form-control(
+      name='text' 
+      type='text' 
+      ng-model='mainCtrl.text' 
+      autofocus 
+      required 
+      placeholder='What needs to be done ?'
+    )
+.form-group.col-xs-12.col-sm-offset-1.col-sm-10
+  label Filters:
+  input.form-control(
+    name='text' 
+    type='text' 
+    ng-model='mainCtrl.filter.text' 
+    placeholder='What should be shown ?'
+  )
+.form-group.col-xs-12.col-sm-offset-1.col-sm-10
+  .radio
+    label
+      input(
+        type='radio'
+        name='state'
+        value='done'
+        data-ng-model='mainCtrl.filter.state'
+      )
+      span done
+  .radio
+    label
+      input(
+        type='radio'
+        name='state'
+        value='todo'
+        data-ng-model='mainCtrl.filter.state'
+      )
+      span todo
+  .radio
+    label
+      input(
+        type='radio'
+        name='state'
+        value=''
+        data-ng-model='mainCtrl.filter.state'
+      )
+      span all
 .row
   .col-lg-12
-    ul.t-todo-list.col-xs-12.col-sm-offset-1.col-sm-10
-      li.t-task(ng-repeat='thing in mainCtrl.awesomeThings')
-        span(href='#')
-          | {{thing.name}}
-
+    div(data-t-todo-list data-filter='mainCtrl.filter')
 footer.footer
   .container
     p
-      a(href='https://sk.linkedin.com/pub/kumor-andrej/32/360/751' target='blank') @kumorko
+      a(
+        href='https://sk.linkedin.com/pub/kumor-andrej/32/360/751'
+        target='blank'
+      ) @kumorko
