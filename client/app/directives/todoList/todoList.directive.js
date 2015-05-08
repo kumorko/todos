@@ -1,19 +1,17 @@
 (function() {
     'use strict';
 
-    function TodoList(taskService) {
+    function TodoList() {
         return {
             templateUrl: 'app/directives/todoList/todoList.html',
             restrict: 'A',
             scope: {
-                filter: '='
-            },
-            link: function(scope, element, attrs) {
-                scope.tasks = taskService.tasks;
+                filter: '=',
+                tasks: '='
             }
         };
     }
 
     angular.module('todosApp')
-        .directive('tTodoList', ['taskService', TodoList]);
+        .directive('tTodoList', TodoList);
 }());

@@ -16,6 +16,7 @@
 
         this.filterShown = false;
         this.counter = taskService.counter;
+        this.tasks = taskService.get();
         this.filter = {
             text: '',
             state: ''

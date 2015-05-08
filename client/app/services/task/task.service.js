@@ -9,11 +9,11 @@
                     method: 'PUT'
                 }
             }),
-            tasks = Task.query(),
             counter = {
                 done: 0,
                 todo: 0
-            };
+            },
+            tasks;
 
         function updateCounter() {
             var done = 0,
@@ -30,12 +30,16 @@
             counter.todo = todo;
         }
 
-        //update counter on tasks load    
-        tasks.$promise.then(updateCounter);
-
         return {
-            tasks: tasks,
             counter: counter,
+            get: function(){
+                if(!tasks){
+                    tasks = Task.query();
+                    //update counter on tasks load    
+                    tasks.$promise.then(updateCounter);
+                }
+                return tasks;
+            },
             create: function(text) {
                 var newTask = new Task({
                     text: text

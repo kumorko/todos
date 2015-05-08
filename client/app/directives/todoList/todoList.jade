@@ -3,4 +3,4 @@ ul.t-todo-list.col-xs-12.col-sm-offset-1.col-sm-10(data-ng-if='tasks.length')
         data-t-task 
         data-ng-repeat='task in tasks | filter:filter'
     )
-p.text-center(data-ng-if='tasks.length === 0') Hooray, nothing to do !!! :-)
+p.text-center(data-ng-if='!tasks || tasks.length === 0') Hooray, nothing to do !!! :-)
