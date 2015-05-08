@@ -11,11 +11,11 @@
     }
 
     angular.module('todosApp', [
-        'ngCookies',
         'ngResource',
         'ngSanitize',
         'ngRoute',
-        'ui.bootstrap'
+        'ui.bootstrap',
+        'ui.bootstrap.showErrors'
     ])
         .config(config);
 })();

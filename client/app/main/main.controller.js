@@ -4,11 +4,17 @@
     function MainCtrl($scope, taskService) {
 
         this.createTask = function() {
+            if (!this.text) {
+                $scope.$broadcast('show-errors-check-validity');
+                return;
+            }
+
             var self = this;
             taskService
                 .create(this.text)
                 .then(function() {
                     self.text = '';
+                    self.resetValidation();
                 }, function() {
                     //TODO error handling
                 });
@@ -20,6 +26,11 @@
         this.filter = {
             text: '',
             state: ''
+        };
+
+
+        this.resetValidation = function() {
+            $scope.$broadcast('show-errors-reset');
         };
     }
 

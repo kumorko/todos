@@ -15,17 +15,19 @@ header.t-banner.hero-unit
 
 .container
   form.t-input-form(
+    novalidate
     name='addTaskForm'
-    ng-submit='mainCtrl.createTask()'
+    data-ng-submit='mainCtrl.createTask()'
   )
-    .input-group.col-xs-12.col-sm-offset-1.col-sm-10
+    .input-group.col-xs-12.col-sm-offset-1.col-sm-10(data-show-errors)
       input.form-control(
         name='text' 
         type='text' 
-        ng-model='mainCtrl.text' 
         autofocus 
         required 
         placeholder='What needs to be done ?'
+        data-ng-model='mainCtrl.text'
+        data-ng-blur='mainCtrl.resetValidation()'
       )
       span.input-group-btn
         button.btn.btn-default(
