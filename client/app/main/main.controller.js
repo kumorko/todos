@@ -14,10 +14,11 @@
                 });
         };
 
+        this.filterShown = false;
         this.counter = taskService.counter;
         this.filter = {
             text: '',
-            done: ''
+            state: ''
         };
     }
 
