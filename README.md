@@ -1,10 +1,11 @@
 # todos
-simple todos web app
+simple todos web app [demo]
 
 
 TODO: 
+	- improve, improve and improve ... :)
+	- preloader
 	- add account support (integration with social media)
-	- due date support
 	- support for tags
 
 	- client
@@ -14,3 +15,4 @@ TODO:
 		- improve validation and error handling
 
 
+[demo]:https://kumorko-todos.herokuapp.com/
