@@ -3,6 +3,7 @@ simple todos web app [demo]
 
 
 TODO: 
+	
 	- improve, improve and improve ... :)
 	- preloader
 	- add account support (integration with social media)
