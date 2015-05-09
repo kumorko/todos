@@ -1,0 +1,86 @@
+div(ng-include='components/navbar/navbar.html')
+
+header.t-banner.hero-unit
+  .container
+    h1 todos
+    p.lead you don't have to remember everything, when you write it down
+    span.t-banner__logo.glyphicon.glyphicon-list
+    .t-counter
+      span.t-counter__todo(title='todo items count')
+        span.glyphicon.glyphicon-unchecked
+        span.t-counter__number {{mainCtrl.counter.todo}}
+      span.t-counter__done(title='done items count')
+        span.glyphicon.glyphicon-check
+        span.t-counter__number {{mainCtrl.counter.done}}
+
+.container
+  form.t-input-form(
+    novalidate
+    name='addTaskForm'
+    data-ng-submit='mainCtrl.createTask()'
+  )
+    .input-group.col-xs-12.col-sm-offset-1.col-sm-10(data-show-errors)
+      input.form-control(
+        name='text' 
+        type='text' 
+        autofocus 
+        required 
+        placeholder='What needs to be done ?'
+        data-ng-model='mainCtrl.text'
+        data-ng-blur='mainCtrl.resetValidation()'
+      )
+      span.input-group-btn
+        button.btn.btn-default(
+          type='button'
+          data-ng-click='mainCtrl.filterShown = !mainCtrl.filterShown'
+          data-ng-class='{active: mainCtrl.filterShown}'
+        )
+          span.glyphicon.glyphicon-filter
+  div(data-ng-if='mainCtrl.filterShown')
+    .form-group.col-xs-12.col-sm-offset-1.col-sm-10
+      label Filters:
+      input.form-control(
+        name='text' 
+        type='text' 
+        placeholder='What should be shown ?'
+        data-ng-model='mainCtrl.filter.text'
+      )
+    .form-group.col-xs-12.col-sm-offset-1.col-sm-10
+      .t-filter__radio.radio
+        label
+          input(
+            type='radio'
+            name='state'
+            value='done'
+            data-ng-model='mainCtrl.filter.state'
+          )
+          span done
+      .t-filter__radio.radio
+        label
+          input(
+            type='radio'
+            name='state'
+            value='todo'
+            data-ng-model='mainCtrl.filter.state'
+          )
+          span todo
+      .t-filter__radio.radio
+        label
+          input(
+            type='radio'
+            name='state'
+            value=''
+            data-ng-model='mainCtrl.filter.state'
+          )
+          span all
+.container
+  .row
+    .col-lg-12
+      div(data-t-todo-list data-filter='mainCtrl.filter' data-tasks='mainCtrl.tasks')
+footer.footer
+  .container
+    p
+      a(
+        href='https://sk.linkedin.com/pub/kumor-andrej/32/360/751'
+        target='blank'
+      ) @kumorko

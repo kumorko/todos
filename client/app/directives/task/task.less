@@ -1,0 +1,62 @@
+.t-task {
+    display: flex;
+	border-bottom: 1px solid #E5E5E5;
+    padding: 10px 15px;
+
+    .glyphicon {
+        font-size: 20px;
+    }
+}
+    
+    .t-task--done {
+        text-decoration: line-through;
+    }
+
+
+  	.t-task__static {
+        display: flex;
+        width: 100%; 
+    }
+        .t-task__state-checkbox{
+            display: none;
+
+            & + label {
+                margin: 0 15px 0 0;
+                cursor: pointer;
+            }
+
+            & + label i {
+                .glyphicon-unchecked();
+                
+                &:hover {
+                    color: @defaultColor;
+                }
+            }
+
+            &:checked + label i {
+                .glyphicon-check();
+            }
+        }
+
+        .t-task__text {
+      		width: 100%;
+
+            &:hover {//ad cursor style on parent, due to cursor change on li border
+               cursor: pointer;
+            }
+      	}
+
+    	.t-task__button {
+    		border: none;
+    		background: none;
+
+    		&:hover,
+            &:focus {
+    			color: @btn-danger-bg;
+    		}
+    	}
+
+
+    .t-task__edit {
+        width: 100%;
+    }
